@@ -1,5 +1,6 @@
 # web-server-email-client
 邮件客户端+简易WEB服务器的设计实践
+
 ## 01 简要介绍
 这是自己实现的一个网页版邮件客户端和与之配套的简易WEB服务器。</br>
 邮件客户端基于socket与其他商用成熟邮件服务进行smtp和pop3连接，支持收发信件，用到了smtp、pop3、SSL协议相关的socket网络编程的知识，在java mail的框架下实现；</br>
@@ -30,8 +31,12 @@ Webpage目录下的index.html是服务器的默认首页，mailAgentWeb文件夹
 ## 07 系统部分演示
 ![](https://github.com/m1-llie/web-server-email-client/blob/master/readmeIMG/4.png)
 ![](https://github.com/m1-llie/web-server-email-client/blob/master/readmeIMG/5.png)
+## 08 待添加功能
+* 可以使用PGP加密
+* 附件的传送涉及到SMTP的MIME，目前的实现有BUG，还没有调试出来
+* 草稿箱功能因为时间原因还有待实现</br>
 
-BTW.</br>
+BTW.写在最后</br>
 从前慢</br>
 车马邮件都慢</br>
 一生只够爱一个人</br>
