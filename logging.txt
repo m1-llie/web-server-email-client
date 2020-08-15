@@ -1,0 +1,8 @@
+[webServer]-服务----MailService----启动完毕！
+[webServer]-Web服务器已经启动完毕!
+[webServer]-web服务器接收到来自IP:/0:0:0:0:0:0:0:1的请求!
+[webServer]-web服务器接收到来自IP:/0:0:0:0:0:0:0:1的请求!
+[webServer]-web服务器收到的http报文首部：GET /index.html HTTP/1.1!
+[webServer]-web服务器收到的http报文首部：GET /image/code41203.jpg HTTP/1.1!
+[webServer]-web服务器接收到来自IP:/0:0:0:0:0:0:0:1的请求!
+[webServer]-web服务器收到的http报文首部：GET /favicon.ico HTTP/1.1!

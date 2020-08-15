@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>邮件很快小组-mailClient</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .login {
+            color: white;
+            height: 38px;
+            width: 300px;
+            background-color: #4A708B;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h2>从前慢 车马邮件都慢<small> 但我们的邮件很快的噢，而且SSL连接、也不会悄咪咪保存您的授权码</small></h2>
+    </div>
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#zero" data-toggle="tab">
+                邮件接收
+            </a>
+        </li>
+        <li>
+            <a href="#first" data-toggle="tab">邮件发送</a>
+        </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane active" id="zero">
+            <div class="container">
+                <h2 class="text-center">登陆就可以查看收件箱噢</h2>
+                <div class="row">
+                    <form class="form-horizontal col-md-offset-4 col-md-4" action="http://baidu.com">
+                        <div class="form-group">
+                            <label for="queryUsername" class="col-sm-2 control-label">邮箱</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="queryUsername" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="queryPassword" class="col-sm-6 control-label">密码/邮箱授权码</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" id="queryPassword" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <button type="submit" id="querySubmit" onclick="return false"
+                                        class="btn btn-default login ">查询邮件列表
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="text-center">
+                <tr>
+                    <th>编号</th><th>发件人</th><th>主题</th><th>内容</th><th>日期</th>
+                </tr>
+
+                <!--<tr>
+                    <td>1</td><td>1326209018@qq.com</td><td>web服务器和网页版邮件客户端</td><td>试一下从QQ邮箱发过来</td><td>Sat, 13 Jun 2020 18</td>
+                </tr>
+                <tr>
+                    <td>2</td><td>houyiweiyw@163.com</td><td>test</td><td>shiyan</td><td>Sat, 13 Jun 2020 18</td>
+                </tr>
+                <tr>
+                    <td>3</td><td>houyiweiyw@163.com</td><td>测试邮件客户端</td><td>6-13测试</td><td>Sat, 13 Jun 2020 18</td>
+                </tr>
+                <tr>
+                    <td>4</td><td>houyiweiyw@163.com</td><td>testMailClient</td><td>试一下我们的web服务器和邮件客户端</td><td>Sat, 13 Jun 2020 09</td>
+                </tr>
+                <tr>
+                    <td>5</td><td>passport@service.netease.com</td><td>网易邮箱账号异常登录提醒</td><td></td><td>Tue, 09 Jun 2020 20</td>
+                </tr>
+                <tr>
+                    <td>6</td><td>h3zh3z@126.com</td><td>Re:test</td><td>test from h3z</td><td>Tue, 09 Jun 2020 19</td>
+                </tr>
+                <tr>
+                    <td>7</td><td>Postmaster@163.com</td><td>系统退信</td><td>抱歉，您的邮件被退回来了……</td><td>Mon, 08 Jun 2020 22</td>
+                </tr>
+                <tr>
+                    <td>8</td><td>support@afterlogic.com</td><td>A word from AfterLogic Support Team</td><td></td><td>Mon, 08 Jun 2020 15</td>
+                </tr>
+                <tr>
+                    <td>9</td><td>support@afterlogic.com</td><td>Thank you for downloading AfterLogic WebMail Lite PHP</td><td>Thank you for downloading AfterLogic WebMail Lite PHP</td><td>Sun, 07 Jun 2020 16</td>
+                </tr>
+                <tr>
+                    <td>10</td><td>ev@ali.ieway.cn</td><td>【EV账号激活】</td><td>尊敬的用户：h3z , 您好！ 您正在注册EV账号,请点击链接完成激活:</td><td>Sat, 06 Jun 2020 22</td>
+                </tr>-->
+
+                </thead>
+                <tbody>
+
+                </tbody>
+                <tfoot class="center">
+                    <tr style="display: none" id="pageIndex">
+                        <td colspan="5" align="center">
+                            <ul class="pagination" id="pagination">
+                                <li><a href="#">«</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">»</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="first">
+            <div class="container">
+                <h2 class="text-center">发送邮件，从这里开始吧~</h2>
+                <form class="form-horizontal col-md-offset-4 col-md-4">
+                    <div class="form-group">
+                        <label for="sendPassword" class="col-sm-2 control-label">邮箱</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="sendUsername" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sendPassword" class="col-sm-6 control-label">密码/邮箱授权码</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="sendPassword" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="toUsername" class="col-sm-6 control-label">接收方邮件地址</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="toUsername" placeholder="接受方邮箱地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="col-sm-12">邮件主题</label>
+                        <input type="text" class="col-sm-12 form-control" id="subject" placeholder="主题Subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="content" class="col-sm-12">邮件内容</label>
+                        <textarea type="text" class="col-sm-12 form-control" id="content"
+                                  placeholder="内容Content"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <button type="submit" onclick="return false;" id="sendSubmit"
+                                    class="btn btn-default login ">发送邮件
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myMailSubject">
+                    模态框（Modal）标题
+                </h4>
+            </div>
+            <div class="modal-body" id="myMailContent">
+                在这里添加一些文本
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script>
+    let username, password,activeIndex,queryParam,totalCount;
+    $("#sendSubmit").click(function () {
+        if ($("#sendUsername").val() === "" || $("#sendPassword").val() === "" || $("#subject").val() === "" || $("#content").val() === "" || $("#toUsername").val() === "") {
+            alert("请将所要输入的信息输入完全！");
+        }
+        let sendParam = "type=send&username=" + $("#sendUsername").val() + "&password=" + $("#sendPassword").val() + "&tousername=" + $("#toUsername").val() +
+            "&subject=" + $("#subject").val() + "&content=" + $("#content").val();
+        $.get("http://127.0.0.1:1010/send?" + sendParam).success(function (res) {
+            alert("邮件已经成功投递到：" + $("#toUsername").val());
+        }).fail(function () {
+            alert("发送邮件过程发生错误！请重试！");
+        });
+    });
+
+    $("#querySubmit").click(function () {
+        if ($("#queryUsername").val() === "" || $("#queryPassword").val() === "") {
+            alert("请将所要输入的信息输入完全！");
+        }
+        username = $("#queryUsername").val();
+        password = $("#queryPassword").val();
+        queryParam = "type=query&username=" + $("#queryUsername").val() + "&password=" + $("#queryPassword").val();
+        activeIndex = 1;
+        getMailInfo(queryParam);
+    });
+
+
+    function getPage(i) {
+        activeIndex = i;
+        queryParam = "type=query&username=" + username + "&password=" + password + "&startIndex=" + Number((i - 1) * 10 + 1) + "&endIndex=" + Math.min( i * 10, totalCount);
+        getMailInfo(queryParam);
+    }
+    
+    function getExactMail(index) {
+        queryParam = "type=query&username=" + username + "&password=" + password + "&startIndex=" + Number(index) + "&endIndex=" + Number(index);
+        $.get("http://127.0.0.1:1010/query?" + queryParam).success(res => {
+            let item = res["data"][0];
+            let subject = item["Subject"] === undefined ? item["subject"].substr(0,30) : item["Subject"].substr(0,30);
+            $("#myMailSubject").text(subject);
+            $("#myMailContent").html(item["Content"]);
+            $('#myModal').modal('show');
+        });
+    }
+
+    function deleteMail(index) {
+        queryParam = "type=delete&username=" + username + "&password=" + password + "&deleteIndex=" + Number(index);
+        $.get("http://127.0.0.1:1010/delete?" + queryParam).success(res => {
+            if (res["deleteState"] === true){
+                alert("删除邮件成功！即将刷新邮箱！");
+                getPage(1);
+            }else{
+                alert("删除邮件失败！请检查！");
+            }
+        });
+    }
+
+    function getMailInfo(queryParam) {
+        $.get("http://127.0.0.1:1010/query?" + queryParam).success(function (res) {
+            let appendData = '';
+            let tempData = '';
+            for (let index in res["data"]) {
+                let item = res["data"][index];
+                let reg = /\w+@\w+.\w+/;
+                let from = item["From"] === undefined ? item["from"].match(reg) : item["From"].match(reg);
+                let subject = item["Subject"] === undefined ? item["subject"].substr(0,30) : item["Subject"].substr(0,30);
+                tempData =
+                    "<tr>" +
+                    "<td>" + item["index"] + "</td>" +
+                    "<td>" + from + "</td>" +
+                    "<td>" + subject + "</td>" +
+                    "<td>" + item["Content"].substr(0,30).replace("<","&lt;").replace(">","&gt;") + "</td>" +
+                    "<td>" + item["Date"] + "</td>" +
+                    "<td><button id=\"detail\" type=\"button\" class=\"btn btn-primary btn-sm\" onclick=\"getExactMail(" + item["index"] + ")\">查看详情</button>" +
+                    "<button id='delete' type=\"button\" class=\"btn btn-danger btn-sm\" style='margin-left: 5px' onclick=\"deleteMail(" + item["index"] + ")\">删除</button></td>" +
+                    "</tr>";
+                appendData += tempData;
+            }
+            $("tbody").html(appendData);
+            totalCount = res["totalCount"];
+            tempData = "<li><a href=\"#\">«</a></li>";
+            for (let i = 1;i < Math.ceil(totalCount / 10) + 1;i++){
+                tempData += "<li><a href=\"#\" onclick=" + "\"getPage(" + i + ");\">" + i + "</a></li>"
+            }
+            tempData += "<li><a href=\"#\">»</a></li>";
+            $("#pagination").html(tempData);
+            $("#pageIndex").show();
+            alert("从服务器获取邮件列表成功！");
+            $("#pagination").children().eq(activeIndex).addClass("active");
+        }).fail(function () {
+            alert("查询邮件过程出现错误！请重试！");
+        });
+    }
+</script>
+</body>
+</html>

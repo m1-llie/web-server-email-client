@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>邮件很快小组-webServer-首页</title>
+	<style>
+		/*added by lr */
+
+		.out #title {
+			opacity: 0;
+		}
+
+		.out #additional {
+			opacity: 0;
+		}
+
+		.out #hero{
+			opacity: 0;
+		}
+
+		.in {
+			opacity: 1;
+		}
+
+		#title {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			top: 5%;
+			text-align: center;
+			-webkit-transition: All 1.6s ease-out;
+		}
+
+		#title img {
+			width: 25%;
+			max-width: 530px;
+		}
+		#hero {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			top: 10%;
+		}
+
+		#hero img {
+			width: 82%;
+			max-width: 400px;
+		}
+
+
+		#additional {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			bottom: 15%;
+			text-align: center;
+			-webkit-transition: All 1s 0.8s ease-in;
+		}
+
+		#additional img {
+			width: 45%;
+			max-width: 760px;
+		}
+		body {
+			background-color: #918b8b
+		}
+	</style>
+
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			startdelay = 1000;
+			setTimeout("$('#topic').removeClass('out').addClass('in')", startdelay );
+
+		});
+	</script>
+</head>
+
+<body>
+	<!-- 背景div -->
+	
+	<div id="mydiv" style="height:500px;"></div>
+	<div id="topic" class="out">
+		<div id="title">
+			<img src="./images/title.png">
+		</div>
+		<div id="hero">
+			<img src="./images/hero1.png">
+		</div>
+		<div id="additional">
+			<img src="./images/additional.png">
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			//配置
+			var config = {
+				vx: 4, //小球x轴速度,正为右，负为左
+				vy: 4, //小球y轴速度
+				height: 2, //小球高宽，其实为正方形，所以不宜太大
+				width: 2,
+				count: 200, //点个数
+				color: "121, 162, 185", //点颜色
+				stroke: "130,255,255", //线条颜色
+				dist: 6000, //点吸附距离
+				e_dist: 20000, //鼠标吸附加速距离
+				max_conn: 10 //点到点最大连接数
+			}
+
+			//调用
+			CanvasParticle(config);
+		}
+	</script>
+	<script type="text/javascript" src="./js/canvas-particle.js"></script>
+
+
+</body>
+
+</html>
